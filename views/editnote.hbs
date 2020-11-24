@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <nav class = "nav">
+        <h3>Private Notes</h3>
+        <ul class = "nav-links">
+            <li><a href="/home">Home</a>></li>
+            <li><a href="/logout">Logout</a>></li>
+        </ul>>
+    </nav>
+
+    <div class = "app">
+        <form action="/auth/editnote" method="POST">
+                      
+            <div class = "menu">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="title" 
+                    name="title"
+                    placeholder="Enter title to edit note"/>
+                <button type="submit" style = "note-btn" class = "search">Search</button>
+            </div>
+                    
+            <div class = "inner-container"> 
+
+                <div class = "header-login">Display Note</div>
+            
+                    <div class ="box">
+
+                        {{#each userData }}
+
+                            {{#if message }}
+                                <h4 class="alert alert-danger mt-4">{{message}}</h4>
+                            {{/if}}
+
+                            <div class = "note-group" style="margin: 0">
+                                <label for="title">Title</label>
+                                <input 
+                                    type="text" 
+                                    class="login-input" 
+                                    id="title" 
+                                    name="title"
+                                    placeholder={{this.title}}/>
+                            </div>
+
+                            <div class = "note-group" style="margin: 0">
+                                <label for="category">Category</label>
+                                <input 
+                                    type="text" 
+                                    class="login-input" 
+                                    id="category" 
+                                    name="category"
+                                    placeholder={{this.category}}/>                        
+                            </div>
+
+                            <div class = "note-group" style="margin: 0">
+                                <label for="date">Date</label>
+                                <input 
+                                    type="text" 
+                                    class="login-input" 
+                                    id="date" 
+                                    name="date"
+                                    placeholder={{this.date}}/>                   
+                            </div>
+
+                            <div class = "content-group" style="margin: 0">
+                                <label for="content">Content</label>
+                                <input 
+                                    type="text" 
+                                    class="content" 
+                                    id="content" 
+                                    name="content"
+                                    text = {{this.content}}
+                                    
+                                />                                       
+                            </div>
+
+                        {{/each}}
+                    </div>
+                    
+                    <button type="submit" class = "login-btn">Save</button>
+
+                </div>  
+   
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

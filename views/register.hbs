@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <nav class = "nav">
+        <h3>Private Notes</h3>
+        <ul class = "nav-links">
+            <li><a href="/">Home</a>></li>
+            <li><a href="/login">Login</a>></li>
+            <li><a href="/register">Register</a>></li>
+        </ul>>
+    </nav>
+
+    <div class = "app">
+
+        <div class = "inner-container">
+                
+            <h1 class = "privateNotes">Private Notes</h1>
+            
+            <div class = "header-login">Register</div>
+            
+            <div class ="box">
+
+                <form action="/auth/register" method="POST">
+                    <div class = "input-group">
+                        <label for="username">Username</label>
+                        <input 
+                            type="text" 
+                            class="login-input" 
+                            id="username" 
+                            name="username"
+                            placeholder="Username"/>
+                    </div>
+
+                    <div class = "input-group">
+                        <label for="password">Password</label>
+                        <input 
+                            type="password" 
+                            class="login-input" 
+                            id="password" 
+                            name="password"
+                            placeholder="Password"/>
+                    </div>
+
+                     <div class = "input-group">
+                        <label for="passwordConfirm">Confirm Password</label>
+                        <input 
+                            type="password" 
+                            class="login-input" 
+                            id="passwordConfirm" 
+                            name="passwordConfirm"
+                            placeholder="Password"/>
+                    </div>
+                    
+                    
+                    <button type="submit" class = "login-btn">Register User</button>
+                </form>
+            </div>
+        </div>
+
+        {{#if message }}
+            <h4 class="alert alert-danger mt-4">{{message}}</h4>
+        {{/if}}
+    </div>
+
+</body>
+</html>

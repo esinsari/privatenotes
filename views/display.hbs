@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <nav class = "nav">
+        <h3>Private Notes</h3>
+        <ul class = "nav-links">
+            <li><a href="/home">Home</a>></li>
+            <li><a href="/logout">Logout</a>></li>
+        </ul>>
+    </nav>
+
+    <div class = "app">
+        <form action="/auth/display" method="POST">
+                      
+            <div class = "menu">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="title" 
+                    name="title"
+                    placeholder="Enter title to display note"/>
+                <button type="submit" style = "note-btn" class = "search">Search</button>
+            </div>
+                    
+            <div class = "inner-container"> 
+
+                <div class = "header-login">Display Note</div>
+            
+                    <div class ="box">
+
+                        {{#each userData }}
+
+                            <div class = "note-group" style="margin: 0">
+                                <p class="login-input"><strong>Title: </strong>{{this.title}}</p>
+                            </div>
+
+                            <div class = "note-group" style="margin: 0">
+                                <p class="login-input"><strong>Category: </strong>{{this.category}}</p>
+                            </div>
+
+                            <div class = "note-group" style="margin: 0">
+                                <p class="login-input"><strong>Date: </strong>{{this.date}}</p>                         
+                            </div>
+
+                            <div class = "content-group" style="margin: 0">
+                                <p class="content" style = "height: 6em"><strong>Content: </strong>{{this.content}}</p>                                        
+                            </div>
+
+                        {{/each}}
+                    </div>
+
+                </div>           
+   
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

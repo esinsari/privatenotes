@@ -1,0 +1,331 @@
+.app {
+    min-height: 90vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    background-image: url("https://www.ncausa.org/portals/56/Images/Industry/NCA_Web_Medium_coffee-online-2.png?ver=2016-05-24-135101-303");
+    background-color: #cccccc; 
+    height: 500px;
+    background-position: center;   
+    background-repeat: no-repeat;
+    background-size: cover;          
+    opacity: 0.9;
+  }
+  
+/*Navigator*/
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    background: rgb(73, 79, 82);
+    color: white;
+}
+  
+.nav-links {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 8px;
+}
+
+nav li a:hover {
+    color: yellow;
+    text-decoration: none;
+}
+
+/************Home Page************/
+
+.header {
+    font-size: 2rem;
+}
+  
+.pink {
+    position: absolute;
+    top: 200px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    min-height: 5vh;
+    min-width: max-content;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    height: 2.1em;
+    border-radius: 1px;
+    border: 6px solid;
+    transition: border 0.4s ease-out;
+    padding: 150px;
+    margin-bottom: 1.5em; 
+}
+  
+.tab {
+   margin-top: 15em;
+}
+
+/****************NOte Page****************/
+
+.note-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100vh;
+}
+
+.content-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100vh;
+}
+
+.content {
+  width: 100vh;
+  height: 10em;
+  border-radius: 3px;
+  border: 1px solid;
+  transition: border 0.4s ease-out;
+  padding: 0.5px;
+  font-family: Oxygen, sans-serif;
+  font-size: 19px;
+  color: #3e3e42;
+  background: rgba(15, 15, 15, 0.01);
+  background-color: #ffffff;
+  opacity: 0.6;
+}
+
+/****************LogIn Page****************/
+
+ .privateNotes {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    min-height: 5vh;
+    min-width: max-content;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    height: 1em;
+    border-radius: 1px;
+    border: 6px solid;
+    transition: border 0.4s ease-out;
+    padding: 50px;
+    margin-bottom: 1.5em;  
+  }
+  
+  .inner-container {
+    transition: visibility 0.2s ease-out;
+  }
+  
+  .header-login {
+      text-align: center;
+      padding: 5px;
+      margin-bottom: 17px;
+      font-family: Ozxgen, sans-serif;
+      font-size: 22px;
+      border-bottom: 2px solid;
+      
+  }
+  
+  .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .login-input {
+    height: 2.1em;
+    border-radius: 3px;
+    border: 1px solid;
+    transition: border 0.4s ease-out;
+    padding: 0.5px;
+    font-family: Oxygen, sans-serif;
+    font-size: 19px;
+    color: #3e3e42;
+    background: rgba(15, 15, 15, 0.01);
+    background-color: #ffffff;
+    opacity: 0.6;
+  }
+
+  .search-input {
+    height: 2.1em;
+    border-radius: 3px;
+    border: 1px solid  #333;
+    transition: border 0.4s ease-out;
+    padding: 0.5px;
+    font-family: Oxygen, sans-serif;
+    font-size: 19px;
+    color: white;
+    background: rgba(15, 15, 15, 0.01);
+    background-color:  #333;
+    opacity: 0.6;
+  }
+
+  .search {
+    float: right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: #4CAF50
+  }
+  
+  .login-btn {
+    display: flex;
+    align-items: center;
+    padding: 2px 30px;
+    font-size: 18px;
+    border-radius: 3px;
+    font-family: Oxygen, sans-serif;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-out;
+    cursor: pointer;
+    border: 2px solid black;
+    opacity: 0.6;
+  
+  }
+
+  .note-btn {
+    float: right;
+    align-items: center;
+    padding: 2px 30px;
+    font-size: 18px;
+    border-radius: 3px;
+    font-family: Oxygen, sans-serif;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-out;
+    cursor: pointer;
+    border: 2px solid black;
+    opacity: 0.6;
+  
+  }
+
+
+  /****************Sort Menu****************/
+  .menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+    margin-top: 5em;
+    margin-bottom: 3em;
+  }
+  
+  .option {
+    float: left;
+  }
+  
+  .option a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  .option a:hover {
+    background-color: #111;
+  }
+
+  .active {
+    background-color: #4CAF50;
+  }  
+
+
+  .nice {
+    list-style-type: none;
+    background-color: #333;
+    border: 1px solid #333;
+    opacity: 0.8;
+    height: 45px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 0px 14px;
+    text-decoration: none;
+  }
+  
+  .note_design {
+    list-style-type: none;
+    justify-content: space-around;
+    align-items: center;
+    display: flex; 
+  }
+  
+  .newapp {
+    min-height: 90vh;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    background-image: url("https://www.ncausa.org/portals/56/Images/Industry/NCA_Web_Medium_coffee-online-2.png?ver=2016-05-24-135101-303");
+    background-color: #cccccc; 
+    height: 500px;
+    background-position: center;   
+    background-repeat: no-repeat;
+    background-size: cover;          
+    opacity: 0.9;
+  }
+
+
+  /****************Sidebar Menu****************/
+  .sidenav {
+    height: 100%;
+    width: 180px;
+    position: fixed;
+    z-index: 1;
+    top: 73px;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
