@@ -255,25 +255,6 @@ exports.display = (req, res) => {
     });
 }
 
-exports.editnote = (req, res) => {
-   
-    console.log(req.body);
-
-    const{ title } = req.body;
-    
-    connection.query("SELECT * FROM note WHERE title = ?", [title], function (error, result, fields) {
-        if (error){
-           throw error;
-        } 
-        else {        
-            console.log(result);
-            res.render('editnote', {
-                userData: result
-            })
-        }
-    });
-}
-
 exports.delete = (req, res) => {
    
     console.log(req.body);
@@ -298,12 +279,26 @@ exports.delete = (req, res) => {
         } 
         else {        
             console.log("Note deleted");
-            res.render('delete', {
-                message: 'Note is deleted'
+        }
+    });
+
+}
+
+exports.editnote = (req, res) => {
+   
+    console.log(req.body);
+
+    const{ title } = req.body;
+    
+    connection.query("SELECT * FROM note WHERE title = ?", [title], function (error, result, fields) {
+        if (error){
+           throw error;
+        } 
+        else {        
+            console.log(result);
+            res.render('editnote', {
+                userData: result
             })
         }
     });
-    
-    //res.redirect('/users/user-list');
-  
 }

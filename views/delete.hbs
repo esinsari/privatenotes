@@ -23,12 +23,12 @@
                     id="title" 
                     name="title"
                     placeholder="Enter title to delete note"/>
-                <button type="submit" style = "note-btn" class = "search">Search</button>
+                <button type="submit" style = "note-btn" class = "search">Delete</button>
             </div>
                     
             <div class = "inner-container"> 
 
-                <div class = "header-login">Delete Note</div>
+                <div class = "header-login">Deleted Note</div>
             
                     <div class ="box">
 
@@ -52,18 +52,10 @@
 
                         {{/each}}
                     </div>
-
-                    
-                    <button type="submit" class = "login-btn">Delete Note</button>
                 </div>           
    
             </div>
         </form>
-
-        {{#if message }}
-            <h4 class="alert alert-danger mt-4">{{message}}</h4>
-        {{/if}}
-
     </div>
 </body>
 </html>
