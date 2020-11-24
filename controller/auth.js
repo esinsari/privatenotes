@@ -291,4 +291,19 @@ exports.delete = (req, res) => {
             })
         }
     });
+
+    connection.query("DELETE FROM note WHERE title = ?", [title], function (error, result, fields) {
+        if (error){
+           throw error;
+        } 
+        else {        
+            console.log("Note deleted");
+            res.render('delete', {
+                message: 'Note is deleted'
+            })
+        }
+    });
+    
+    //res.redirect('/users/user-list');
+  
 }

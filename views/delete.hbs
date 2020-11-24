@@ -55,11 +55,14 @@
 
                     
                     <button type="submit" class = "login-btn">Delete Note</button>
-
                 </div>           
    
             </div>
         </form>
+
+        {{#if message }}
+            <h4 class="alert alert-danger mt-4">{{message}}</h4>
+        {{/if}}
 
     </div>
 </body>
