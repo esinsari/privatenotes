@@ -8,9 +8,11 @@
     <nav class = "nav">
         <h3>Private Notes</h3>
         <ul class = "nav-links">
-            <li><a href="/home">Home</a>></li>
-            <li><a href="/logout">Logout</a>></li>
-        </ul>>
+            <form action=""  method="POST"> 
+                <button type="submit" formaction="/home" class = "home-btn">Home</button>
+            </form>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
     </nav>
 
     <div class = "app">
@@ -27,12 +29,10 @@
             </div>
                     
             <div class = "inner-container"> 
-
-                <div class = "header-login">Deleted Note</div>
-            
-                    <div class ="box">
-
-                        {{#each userData }}
+                {{#each userData }}
+                    <div class = "header-login">This Note is Deleted</div>
+                
+                        <div class ="box">
 
                             <div class = "note-group" style="margin: 0">
                                 <p class="login-input"><strong>Title: </strong>{{this.title}}</p>
@@ -49,11 +49,10 @@
                             <div class = "content-group" style="margin: 0">
                                 <p class="content" style = "height: 6em"><strong>Content: </strong>{{this.content}}</p>                                        
                             </div>
-
-                        {{/each}}
-                    </div>
-                </div>           
-   
+                
+                        </div>
+                    </div>           
+                {{/each}}
             </div>
         </form>
     </div>

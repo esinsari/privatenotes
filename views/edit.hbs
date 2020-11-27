@@ -57,12 +57,12 @@
                     
                     <button type="submit" class = "login-btn">Save</button>
                 </form>
+                
+                {{#if message }}
+                    <h4 class="alert alert-danger mt-4">{{message}}</h4>
+                {{/if}}
             </div>
         </div>
-        
-        {{#if message }}
-            <h4 class="alert alert-danger mt-4">{{message}}</h4>
-        {{/if}}
     </div>
 
 </body>

@@ -228,7 +228,6 @@ nav li a:hover {
   
   }
 
-
   /****************Sort Menu****************/
   .menu {
     list-style-type: none;
@@ -321,11 +320,43 @@ nav li a:hover {
     display: block;
   }
   
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+
+  .side-btn {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px 6px 16px;
+    font-size: 20px;
+    border-radius: 3px;
+    font-family: Oxygen, sans-serif;
+    background-color: #111;
+    border:  #111;
+    color:#818181; 
+  }
+
+  .side-btn:hover {
+    background-color: #111; 
+    color:white;
+    border:  #111;
+  }
+  
+  .home-btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgb(73, 79, 82);
+    color: white;
+    font-weight: bold;
+    padding: 2px 20px;
+    font-size: 17px;
+    border: rgb(73, 79, 82);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.home-btn:hover{
+    color: yellow;
+    background-color: rgb(73, 79, 82); 
+}

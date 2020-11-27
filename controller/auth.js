@@ -70,17 +70,24 @@ exports.login = async (req, res) => {
             })
         }
             // Restricts new users to register with an existing username in database
-        connection.query("SELECT * FROM user WHERE username = ?", [username], async (error, results) => {
+        connection.query("SELECT * FROM user WHERE username = ?, password = ?", [username, password], async (error, results) => {
         
             console.log(results);
 
             // if there is no equivalent username/ incorrect password in database
             // LATER add to bcrypt.compare(password, results[0].password)
-            if(!results) {
-                res.status(400).render('login', {
+            if( typeof query === 'undefined'){
+                console.log('Incorrect username or password');
+                res.render('login', {
                     message: 'Incorrect username or password'
                 })
-            }    
+            }
+            else if(results.length == 0) {
+                console.log('Incorrect username or password');
+                res.render('login', {
+                    message: 'Incorrect username or password'
+                })
+            }
             else {
                 const id = results[0].id;
 
@@ -99,8 +106,20 @@ exports.login = async (req, res) => {
 
                 res.cookie('jwt', token, cookieOptions);
 
+                connection.query("SELECT * FROM note", function (error, result, fields) {
+                    if (error){
+                       throw error;
+                    } 
+                    else {        
+                        console.log(result);
+                        res.render('home', {
+                            userData: result
+                        })
+                    }
+                });
+
                 //redirect user to home page
-                res.status(200).redirect("/home");
+               // res.status(200).redirect("/home");
 
             }
         });
@@ -128,17 +147,31 @@ exports.edit = (req, res) => {
         })   
     }
 
-    connection.query("UPDATE user SET password = 'password' WHERE username = 'username'", {username: username, password: password}, (error, results) => {
-        if(error) {
-            throw error;
-        }
-        else {
-            return res.render('edit', {
-                message: 'Password is successfully changed'
-            })  
-        }
-    });
+    connection.query("SELECT * FROM user WHERE username = ?", [username], async (error, results) => {
+        
+        console.log(results);
 
+        // if there is no equivalent username/ incorrect password in database
+        // LATER add to bcrypt.compare(password, results[0].password)
+        if(results.length == 0) {
+            console.log('Incorrect username or password');
+            res.render('edit', {
+                message: 'Incorrect username'
+            })
+        }    
+
+        var sql = "UPDATE user SET password = ? WHERE username = ?"
+        connection.query(sql, [password, username], (error, results) => {
+            if(error) {
+                throw error;
+            }
+            else {
+                return res.render('edit', {
+                    message: 'Password is successfully changed'
+                })  
+            }
+        });
+    });
 }
 
 exports.note = (req, res) => {
@@ -146,7 +179,6 @@ exports.note = (req, res) => {
 
     const{ username, title, category, date, content } = req.body;
 
-    // Restricts new users to register with an existing username in database
     connection.query("SELECT title FROM note WHERE title = ?", [title], (error, results) => {
         if(error) {
             console.log(error);
@@ -163,8 +195,6 @@ exports.note = (req, res) => {
             })
         }
     
- 
-        // LATER CHANGE PASSWORD TO HASSPASSWORD
         connection.query("INSERT INTO note set ?", {username: username, title: title, category: category, date: date, content: content}, (error, results) => {
             if(error) {
                 throw error;
@@ -181,8 +211,7 @@ exports.note = (req, res) => {
 
 exports.home = (req, res) => {
     
-    console.log(req.body);
-    
+    console.log(req.body);  
 
     connection.query("SELECT * FROM note", function (error, result, fields) {
         if (error){
@@ -246,6 +275,11 @@ exports.display = (req, res) => {
         if (error){
            throw error;
         } 
+        else if (results.length == 0) {
+            return res.render('note', {
+                message: 'Entered title is not exist'
+            })
+        }
         else {        
             console.log(result);
             res.render('display', {
@@ -265,6 +299,11 @@ exports.delete = (req, res) => {
         if (error){
            throw error;
         } 
+        else if (results.length == 0) {
+            return res.render('note', {
+                message: 'Entered title is not exist'
+            })
+        }
         else {        
             console.log(result);
             res.render('delete', {
@@ -285,15 +324,20 @@ exports.delete = (req, res) => {
 }
 
 exports.editnote = (req, res) => {
-   
+    
     console.log(req.body);
 
-    const{ title } = req.body;
+    const{search} = req.body;
     
-    connection.query("SELECT * FROM note WHERE title = ?", [title], function (error, result, fields) {
+    connection.query("SELECT * FROM note WHERE title = ?", [search], function (error, result, fields) {
         if (error){
            throw error;
-        } 
+        }
+        else if (results.length == 0) {
+            return res.render('note', {
+                message: 'Entered title is not exist'
+            })
+        }
         else {        
             console.log(result);
             res.render('editnote', {
@@ -302,3 +346,4 @@ exports.editnote = (req, res) => {
         }
     });
 }
+

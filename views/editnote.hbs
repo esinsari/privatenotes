@@ -8,35 +8,43 @@
     <nav class = "nav">
         <h3>Private Notes</h3>
         <ul class = "nav-links">
-            <li><a href="/home">Home</a>></li>
-            <li><a href="/logout">Logout</a>></li>
-        </ul>>
+            <form action=""  method="POST"> 
+                <button type="submit" formaction="/home" class = "home-btn">Home</button>
+            </form>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
     </nav>
 
     <div class = "app">
-        <form action="/auth/editnote" method="POST">
-                      
-            <div class = "menu">
+
+        <form action=""  method="POST">                  
+            <div class = "menu" style="margin-top: 2em;">
                 <input 
                     type="text" 
                     class="search-input" 
-                    id="title" 
-                    name="title"
+                    id="search" 
+                    name="search"
                     placeholder="Enter title to edit note"/>
-                <button type="submit" style = "note-btn" class = "search">Search</button>
+                <button type="submit" formaction="/auth/editnote" style = "note-btn" class = "search">Search</button>
             </div>
-                    
+      
             <div class = "inner-container"> 
 
-                <div class = "header-login">Display Note</div>
+                <div class = "header-login">Edit Note</div>
             
                     <div class ="box">
 
                         {{#each userData }}
 
-                            {{#if message }}
-                                <h4 class="alert alert-danger mt-4">{{message}}</h4>
-                            {{/if}}
+                            <div class = "note-group" style="margin: 0">
+                                <label for="title">Username</label>
+                                <input 
+                                    type="text" 
+                                    class="login-input" 
+                                    id="username" 
+                                    name="username"
+                                    value="{{this.username}}"/>
+                            </div>
 
                             <div class = "note-group" style="margin: 0">
                                 <label for="title">Title</label>
@@ -45,7 +53,7 @@
                                     class="login-input" 
                                     id="title" 
                                     name="title"
-                                    placeholder={{this.title}}/>
+                                    value="{{this.title}}"/>
                             </div>
 
                             <div class = "note-group" style="margin: 0">
@@ -55,7 +63,7 @@
                                     class="login-input" 
                                     id="category" 
                                     name="category"
-                                    placeholder={{this.category}}/>                        
+                                    value="{{this.category}}"/>                        
                             </div>
 
                             <div class = "note-group" style="margin: 0">
@@ -65,7 +73,7 @@
                                     class="login-input" 
                                     id="date" 
                                     name="date"
-                                    placeholder={{this.date}}/>                   
+                                    value="{{this.date}}"/>                   
                             </div>
 
                             <div class = "content-group" style="margin: 0">
@@ -73,23 +81,21 @@
                                 <input 
                                     type="text" 
                                     class="content" 
+                                    style = "height: 6em"
                                     id="content" 
                                     name="content"
-                                    text = {{this.content}}
-                                    
-                                />                                       
+                                    value="{{this.content}}"/>                                       
                             </div>
-
                         {{/each}}
+                            
                     </div>
-                    
-                    <button type="submit" class = "login-btn">Save</button>
-
+                    <button type="submit" formaction="/search" class="login-btn">Save</button>
                 </div>  
    
             </div>
-        </form>
 
+        </form>      
+    
     </div>
 </body>
 </html>

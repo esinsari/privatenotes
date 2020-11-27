@@ -93,6 +93,90 @@ app.get('/createdb', (req, res) => {
     })
 });
 
+app.post('/search', function(req, res) {
+   
+  console.log(req.body);
+
+  const{ username, title, category, date, content } = req.body;
+  
+  var sql = "UPDATE note SET username = ?, title = ?, category = ?, date = ?, content = ? WHERE title = ?";
+      
+  connection.query(sql, [username, title, category, date, content, title], (error, results) => {
+      if(error) {
+          throw error;
+      }
+      else if( !title ) {
+        return res.status(400).render('editnote', {
+            message: 'Note without title/content/date cannot be submitted'
+        })
+      }
+      else{
+          res.redirect('/home');
+      }
+      
+  });
+
+});
+
+
+app.post('/home', function(req, res) {
+    
+  console.log(req.body);  
+
+  connection.query("SELECT * FROM note", function (error, result, fields) {
+      if (error){
+         throw error;
+      } 
+      else {        
+          console.log(result);
+          res.render('home', {
+              userData: result
+          })
+      }
+  });
+
+});
+
+app.post('/category', function(req, res) {
+  
+  console.log(req.body);
+  
+
+  connection.query("SELECT * FROM note", function (error, result, fields) {
+      if (error){
+         throw error;
+      } 
+      else {        
+          console.log(result);
+          res.render('category', {
+              userData: result
+          })
+      }
+  });
+
+});
+
+app.post('/date', function(req, res) {
+  
+  console.log(req.body);
+  
+
+  connection.query("SELECT * FROM note", function (error, result, fields) {
+      if (error){
+         throw error;
+      } 
+      else {        
+          console.log(result);
+          res.render('date', {
+              userData: result
+          })
+      }
+  });
+
+});
+
+
+
 app.get('/posts', (req, res) => {
     res.send('We are now in posts');
 });

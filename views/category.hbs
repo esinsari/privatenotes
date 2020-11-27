@@ -8,10 +8,12 @@
     <nav class = "nav">
         <h3>Private Notes</h3>
         <ul class = "nav-links">
-            <li><a href="/">Home</a>></li>
+            <form action=""  method="POST"> 
+                <button type="submit" formaction="/home" class = "home-btn">Home</button>
+            </form>
             <li><a href="/edit">Change Password</a>></li>
             <li><a href="/logout">Logout</a>></li>
-        </ul>>
+        </ul>
     </nav>
 
     <div class = "newapp">
@@ -19,10 +21,12 @@
         <div class = "inner-container">
 
             <div class="sidenav">
-                <a href="#sort">Sort by</a>
-                <a href="/home">Title</a>
-                <a href="/category">Category</a>
-                <a href="/date">Date</a>
+                <form action=""  method="POST"> 
+                    <a href="#sort">Sort by</a>               
+                    <button type="submit" formaction="/home" class = "side-btn">Title</button>
+                    <button type="submit" formaction="/category" class = "side-btn">Category</button>
+                    <button type="submit" formaction="/date" class = "side-btn">Date</button>
+                </form>
             </div>
 
             <ul class = "menu">
@@ -32,20 +36,14 @@
                 <li class = "option" style="float:right"><a class="active" href="/note">Create New Note</a></li>
             </ul>
 
-            <div class="note_design ">
-                
-            <form action="/auth/category" method="POST">
-
-                {{#each userData}}
-                    <div class="note_design ">                  
-                        <p class="nice"><strong>Category: </strong>{{this.category}}</p>
-                        <li class = "option" style="float:right"><a class="active" href="/display">View</a></li>
-
-                    </div> 
-                {{/each}}
-               
-                <button type="submit" class = "login-btn">Display Notes</button>
-            </form>
+            {{#each userData}}      
+                <div class="note_design"  style="display: block">
+                        <div class="note_design">                  
+                            <p class="nice"><strong>Category: </strong>{{this.category}}</p>
+                            <li class = "option" style="float:right"><a class="active" href="/display">View</a></li>
+                        </div> 
+                </div>              
+            {{/each}}
 
         </div>
 
