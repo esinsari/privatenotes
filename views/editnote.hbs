@@ -8,8 +8,11 @@
     <nav class = "nav">
         <h3>Private Notes</h3>
         <ul class = "nav-links">
-            <form action=""  method="POST"> 
-                <button type="submit" formaction="/home" class = "home-btn">Home</button>
+            <form action=""  method="POST">
+                {{#if userName}}
+                    <input type="hidden" id="username" value={{userName}} name="username"/>
+                    <button type="submit" formaction="/home" class = "home-btn">Home</button>
+                {{/if}}
             </form>
             <li><a href="/logout">Logout</a></li>
         </ul>
@@ -78,13 +81,8 @@
 
                             <div class = "content-group" style="margin: 0">
                                 <label for="content">Content</label>
-                                <input 
-                                    type="text" 
-                                    class="content" 
-                                    style = "height: 6em"
-                                    id="content" 
-                                    name="content"
-                                    value="{{this.content}}"/>                                       
+                                <textarea id="content" name="content" class="content" style="resize:none; height: 6em ">{{this.content}}</textarea>
+                                      
                             </div>
                         {{/each}}
                             
@@ -94,8 +92,7 @@
    
             </div>
 
-        </form>      
-    
+        </form>          
     </div>
 </body>
 </html>

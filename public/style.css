@@ -93,7 +93,6 @@ nav li a:hover {
 }
 
 .content-group {
-  display: flex;
   flex-direction: column;
   margin-top: 5px;
   margin-bottom: 5px;

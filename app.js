@@ -43,33 +43,8 @@ connection.connect(err => {
   }
 });
 
-/*
-//to create table
-connection.query('CREATE TABLE user(username VARCHAR(45) NOT NULL, password INT NOT NULL)', (err, rows) => {
-  if (!err)
-  {
-    console.log("User table is created");
-  } 
-  else
-  {
-    throw err;
-  }
-});
-
-connection.query('CREATE TABLE note(username VARCHAR(45) NOT NULL, title TEXT(100) NOT NULL, content LONGTEXT, category TEXT(100), date DATE)', (err, rows) => {
-  if (!err)
-  {
-    console.log("Note table is created");
-  } 
-  else
-  {
-    throw err;
-  }
-});
-
-*/
-
 const port = process.env.PORT || 5000;
+
 app.listen(port, () => {
   console.log("Server started on Port 5000");
 });
@@ -104,6 +79,9 @@ app.post('/search', function(req, res) {
   connection.query(sql, [username, title, category, date, content, title], (error, results) => {
       if(error) {
           throw error;
+          return res.status(400).render('editnote', {
+            message: 'Please enter correct format for inputs'
+        })
       }
       else if( !title ) {
         return res.status(400).render('editnote', {
@@ -111,26 +89,33 @@ app.post('/search', function(req, res) {
         })
       }
       else{
-          res.redirect('/home');
+         // res.redirect('/home');
+          res.render('editnote', {
+            userName: username
+        })
       }
       
   });
 
 });
 
-
 app.post('/home', function(req, res) {
     
   console.log(req.body);  
+ 
+  const{ username } = req.body;
 
-  connection.query("SELECT * FROM note", function (error, result, fields) {
+  console.log(username);
+
+  connection.query("SELECT * FROM note WHERE username = ?", [username], function (error, result, fields) {
       if (error){
          throw error;
       } 
       else {        
           console.log(result);
           res.render('home', {
-              userData: result
+              userData: result,
+              userName: username
           })
       }
   });
@@ -140,16 +125,21 @@ app.post('/home', function(req, res) {
 app.post('/category', function(req, res) {
   
   console.log(req.body);
-  
 
-  connection.query("SELECT * FROM note", function (error, result, fields) {
+  const{ username } = req.body;
+
+  console.log(username);
+
+
+  connection.query("SELECT * FROM note WHERE username = ?", [username], function (error, result, fields) {
       if (error){
          throw error;
       } 
       else {        
           console.log(result);
           res.render('category', {
-              userData: result
+              userData: result,
+              userName: username
           })
       }
   });
@@ -159,22 +149,25 @@ app.post('/category', function(req, res) {
 app.post('/date', function(req, res) {
   
   console.log(req.body);
-  
 
-  connection.query("SELECT * FROM note", function (error, result, fields) {
+  const{ username } = req.body;
+
+  console.log(username);
+
+  connection.query("SELECT * FROM note WHERE username = ?", [username], function (error, result, fields) {
       if (error){
          throw error;
       } 
       else {        
           console.log(result);
           res.render('date', {
-              userData: result
+              userData: result,
+              userName: username
           })
       }
   });
 
 });
-
 
 
 app.get('/posts', (req, res) => {

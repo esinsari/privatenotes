@@ -16,10 +16,4 @@ router.post('/display', authController.display);
 
 router.post('/delete', authController.delete);
 
-router.post('/home', authController.home);
-
-router.post('/category', authController.category);
-
-router.post('/date', authController.date);
-
 module.exports = router;

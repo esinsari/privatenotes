@@ -8,10 +8,13 @@
     <nav class = "nav">
         <h3>Private Notes</h3>
         <ul class = "nav-links">
-            <form action=""  method="POST"> 
-                <button type="submit" formaction="/home" class = "home-btn">Home</button>
+            <form action=""  method="POST">
+                {{#if userName}}
+                    <input type="hidden" id="username" value={{userName}} name="username"/>
+                    <button type="submit" formaction="/home" class = "home-btn">Home</button>
+                {{/if}}
             </form>
-            <li><a href="/edit">Change Password</a>></li>
+            <li><a href="/edit">Change Password</a></li>
             <li><a href="/logout">Logout</a>></li>
         </ul>
     </nav>
@@ -22,10 +25,13 @@
 
             <div class="sidenav">
                 <form action=""  method="POST"> 
-                    <a href="#sort">Sort by</a>               
-                    <button type="submit" formaction="/home" class = "side-btn">Title</button>
-                    <button type="submit" formaction="/category" class = "side-btn">Category</button>
-                    <button type="submit" formaction="/date" class = "side-btn">Date</button>
+                    <a href="#sort">Sort by</a>       
+                    {{#if userName}}
+                        <input type="hidden" id="username" value={{userName}} name="username"/>
+                        <button type="submit" formaction="/home" class = "side-btn">Title</button>
+                        <button type="submit" formaction="/category" class = "side-btn">Category</button>
+                        <button type="submit" formaction="/date" class = "side-btn">Date</button>
+                    {{/if}}        
                 </form>
             </div>
 
@@ -36,12 +42,16 @@
                 <li class = "option" style="float:right"><a class="active" href="/note">Create New Note</a></li>
             </ul>
 
-            {{#each userData}}      
+            {{#each userData}}   
                 <div class="note_design"  style="display: block">
+                    <div class="note_design">                                
                         <div class="note_design">                  
-                            <p class="nice"><strong>Title: </strong>{{this.title}}</p>
-                            <li class = "option" style="float:right"><a class="active" href="/display">View</a></li>
+                    <div class="note_design">                                
+                        <p class="nice"><strong>Title: </strong>{{this.title}}</p>
+                        <li class = "option" style="float:right"><a class="active" href="/display">View</a></li>
+                    </div> 
                         </div> 
+                    </div> 
                 </div>              
             {{/each}}
 
