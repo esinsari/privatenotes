@@ -1,5 +1,7 @@
 # privatenotes
-Project/COP4331 - JavaScript, MySQL, CSS, HTML
+JavaScript, MySQL, CSS, HTML
+
+Project/COP4331 
 
 Project 3: Private Notes 
 
